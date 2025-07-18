@@ -11,7 +11,8 @@ git push origin master
 ```
 > 항상 ***add -> commit -> push*** 순으로 진행해야 한다!
 
->cf) conflict가 일어나는 경우
+>[!TIP]
+>conflict가 일어나는 경우
 >git을 통해 협업을 하다보면 어떤 사람이 commit을 꾸준히 하지 않아 두 브랜치의 같은 파일에 상반된 내용이 들어가 충돌이 일어나는 경우가 발생한다.
 >```
 > <<<<< HEAD
