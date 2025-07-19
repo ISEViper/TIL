@@ -37,7 +37,30 @@ git pull origin master
 ```bash
 git clone remote_repo_url
 ```
+# git revert/reset
 
+1. git revert  
+git에 `commit`한 내용을 삭제하는 것이 아닌 기존 `commit`을 유지하되 이전의 상태로 되돌리는 명령어
+```bash
+git revert <commit_id>
+```
+사용한 경우 이전 커밋 내용은 남아있고 `revert commit_내용`으로 다시 새로운 커밋이 형성
+
+2. git reset  
+git에 `commit`한 내용을 지우는 명령어 (프로젝트를 진행할 때에는 자주 사용하지 않는 것이 좋음!)
+- git reset의 3가지 종류
+```bash
+git reset --soft <commit_id>
+```
+git에 커밋한 내용을 staging area로 되돌리는 `reset`
+```bash
+git reset --mixed <commit_id>
+```
+git에 커밋한 내용을 working directory로 되돌리는 `reset`
+```bash
+git reset --hard <commit_id>
+```
+git에 커밋한 내용을 삭제하는 `reset`
 # gitignore
 Git에서 특정 파일이나 디렉토리를 추적하지 못하도록 설정하는데 사용되는 텍스트 파일
 ```bash
