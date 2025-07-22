@@ -6,3 +6,4 @@
 [Markdown](markdown/)  
 [Git](git/)  
 [Github](github/)  
+[Basic syntax(1)](basic_syntax_1/)  
