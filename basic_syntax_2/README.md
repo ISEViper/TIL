@@ -59,8 +59,63 @@ print(my_list) # [1, 'a', '안녕', '안녕하세요', '반가워요', 5, 'c']
 ## range의 규칙
 
 # dict
+**key-value** 쌍으로 이루어진 순서와 중복이 없는 변경 하는한 자료형
+```python
+my_f1 = {'max':'red_bull', 'oscar':'mclaren', 'luis':'ferrai'}
+```
+### 딕셔너리 표현
+- 중괄호{}안에 값들이 쉼표(,)로 구분
+- 값 한 개는 key(키)와 value(값)으로 구성되어 있음  
+    `{key : value}`
+    - key(키): 값을 식별하기 위한 고유한 '이름표'
+    - value(값): 키에 해당하는 실제 데이터
+>[!WARNING]  
+>**딕셔너리 순서?**
+>- 딕셔너리는 순서가 없는 자료형이지만 파이썬 3.7 이상에서는 입력한 순서대로 출력 시 그대로 유지
+>- 하지만 여전히 딕셔너리의 핵심은 **순서가 없는 자료형**이라는 점과 **Key를 통한 접근**이라는 점!
+
 ## 딕셔너리 규칙
+### Key 규칙
+- 고유성이 있어야 함 (**Key는 중복 불가!**)
+- 변경 불가능한 자료형만 이용 가능
+    - 사용 가능: `str`, `int`, `float`, `tupple`
+    - 사용 불가능: `list`, `dict`
+### Value 규칙
+- 어떤 자료형이든 자유롭게 사용 가능
 ## 딕셔너리 값 접근
+- Key를 이용해 해당 Value를 꺼낼 수 있음
+- Key에 접근 시 대괄호[] 사용
+```python
+my_f1 = {'max':'red_bull', 'oscar':'mclaren', 'lewis':'mercedes'}
+p
+print(my_f1['max']) # 'red_bull'
+print(my_f1['lando']) # KeyError: 'lando'
+```
+### 딕셔너리 값 추가 및 변경
+```python
+my_f1 = {'max':'red_bull', 'oscar':'mclaren', 'lewis':'mercedes'}
+
+# 값 추가
+my_f1['george'] = 'mercedes'
+print(my_f1) # {'max': 'red_bull', 'oscar': 'mclaren', 'lewis': 'mercedes', 'george': 'mercedes'}
+
+# 값 변경
+my_f1['lewis'] = 'ferrai'
+print(my_f1) # {'max': 'red_bull', 'oscar': 'mclaren', 'lewis': 'ferrai', 'george': 'mercedes'}
+```
+>[!TIP]  
+>만약에 `dict`과 `list`가 혼합되어 있는 경우
+>```python
+> my_f1 = {
+>    'max': 'red_bull',
+>    'oscar': 'mclaren',
+>    'lewis': 'mercedes',
+>    'teams': ['red_bull', 'mclaren', 'mercedes'],
+>    'positions': [{'driver': 'max', 'position': 1}, {'driver': 'oscar', 'position': 2}]
+>}
+>```
+>여기서 'max'의 'position'을 출력하고 싶다면  
+>`print(my_f1['positions'][0]['position']) # 1`
 
 # set
 ## 세트의 집합 연산
