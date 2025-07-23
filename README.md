@@ -15,7 +15,7 @@
 - [Markdown](/Markdown)
 
 ### 🧱 기초 문법
-- [Basic Syntax (1)](/basic-syntax_1)
+- [Basic Syntax (1)](/basic_syntax_1)
 - [Basic Syntax (2)](/basic_syntax_2)
 
 ---
