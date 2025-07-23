@@ -12,7 +12,7 @@
 - [Github](/github/README.md)
 
 ### ✒️ 문서 작성
-- [Markdown](/Markdown/README.md)
+- [Markdown](/markdown/README.md)
 
 ### 🧱 기초 문법
 - [Basic Syntax (1)](/basic_syntax_1/README.md)
