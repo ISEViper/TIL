@@ -7,16 +7,17 @@
 ## 🔍 탐색하기
 
 ### 🔧 개발 도구
-- [CLI](/cli)
-- [Git](/git)
-- [Github](/github)
+- [CLI](/cli/README.md)
+- [Git](/git/README.md)
+- [Github](/github/README.md)
 
 ### ✒️ 문서 작성
-- [Markdown](/Markdown)
+- [Markdown](/Markdown/README.md)
 
 ### 🧱 기초 문법
-- [Basic Syntax (1)](/basic_syntax_1)
-- [Basic Syntax (2)](/basic_syntax_2)
+- [Basic Syntax (1)](/basic_syntax_1/README.md)
+- [Basic Syntax (2)](/basic_syntax_2/README.md)
+- [Function](/function/README.md)
 
 ---
 
