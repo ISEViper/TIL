@@ -65,8 +65,14 @@ print(make_mul(x, y)) # 15
 ```
 여기서 num1, num2는 매개변수, x, y는 인자
 ## 다양한 인자 종류
+### 위치 인자 (Positional Argument)
+### 기본 인자값 (Default Argument Values)
+### 키워드 인자 (Keyword Arguement)
+### 임의의 인자 목록 (Arbitrary Argument Lists)
+### 임의의 키워드 인자 목록 (Arbitrary Keyword Argument Lists)
+### 함수 인자 권장 작성 순서
 
-# 재귀 함수
+# 재귀 함수 (Recursion function)
 함수 내부에서 자기 자신을 반복하는 함수 (factorial이 대표적인 case!)
 ```python
 def factorial(x):
@@ -81,7 +87,8 @@ print(factorial(5)) # 120
 - 특정 알고리즘 식을 표현할 때 변수 사용이 줄어들고 가독성이 높아짐
 - 1개 이상의 base case(종료되는 상황)이 존재하고 수렴하도록 작성
 - 다만, 종료 조건을 명확하게 하지 않으면 스택 오버플로우 발생
-# 내장 함수
+
+# 내장 함수 (Built-in function)
 Python에서 기본적으로 제공하는 내장 함수(`import` 없이 사용 가능)
 ```python
 my_list = [1, 2, 3, 4, 5]
@@ -97,7 +104,27 @@ print(sorted(my_list, reverse = True)) # [5, 4, 3, 2, 1]
 
 # 함수 스타일 가이드
 ## 함수 이름 작성 원칙
+### 기본 규칙
+- 소문자와 언더스코어(_) 사용
+- 동사로 시작하여 함수 동작 설정
+- 약어 사용 지양
+### 함수 이름 구성 요소
+- 동사 + 명사 : `save_user()`
+- 동사 + 형용사 + 명사 : `calculate_total_users()`
+- get/set 접두사 : `set_username()`
+>[!Note]
+>- 이름만으로 함수가 어떤 역할을 하고 있는지 알아야 함
+>- `True`/`False`를 반환한다면 `is` 또는 `has`로 시작하는 것이 좋음
+>- 프로젝트 전체에 일관성을 유지하는 것이 좋음
 ## 단일 책임 원칙
+모든 객체는 하나의 명확한 목적과 책임을 가져야 함
+### 함수 설계 원칙
+1. 명확한 목적
+   - 이 함수가 어떤 목적을 가지고 한 가지 작업을 수행하는지 명확하게 표현
+2. 책임 분리
+    - 함수 내부에서 여러 역할을 가지고 있는 것이 아닌 독립적으로 작동할 수 있도록 설계
+3. 유지보수성
+   - 함수를 유지보수할 때 작은 범위로 나누어 관리할 수 있도록 하는 것이 좋음 (여기저기 꼬여있으면 하나를 고치면 다른 것이 안되는 경우가 많음 → 본인 경험담)
 
 # Packing & Unpacking
 ## Packing
