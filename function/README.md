@@ -67,11 +67,33 @@ print(make_mul(x, y)) # 15
 ## 다양한 인자 종류
 
 # 재귀 함수
+함수 내부에서 자기 자신을 반복하는 함수 (factorial이 대표적인 case!)
+```python
+def factorial(x):
+    if x == 0:
+        return 1
+    else:
+        return x * factorial(x - 1)
 
+print(factorial(5)) # 120
+```
+### 재귀함수 특징
+- 특정 알고리즘 식을 표현할 때 변수 사용이 줄어들고 가독성이 높아짐
+- 1개 이상의 base case(종료되는 상황)이 존재하고 수렴하도록 작성
+- 다만, 종료 조건을 명확하게 하지 않으면 스택 오버플로우 발생
 # 내장 함수
+Python에서 기본적으로 제공하는 내장 함수(`import` 없이 사용 가능)
+```python
+my_list = [1, 2, 3, 4, 5]
 
+print(len(my_list)) # 5
+print(sum(my_list)) # 15
+print(max(my_list)) # 5
+print(min(my_list)) # 1
+print(sorted(my_list, reverse = True)) # [5, 4, 3, 2, 1]
+```
 # 함수와 Scope
-## global 키워
+## global 키워드
 
 # 함수 스타일 가이드
 ## 함수 이름 작성 원칙
