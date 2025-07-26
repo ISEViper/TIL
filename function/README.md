@@ -66,11 +66,62 @@ print(make_mul(x, y)) # 15
 여기서 num1, num2는 매개변수, x, y는 인자
 ## 다양한 인자 종류
 ### 위치 인자 (Positional Argument)
+- 함수 호출 시 위치에 따라 전달되는 인자
+- 위치 인자는 함수 호출시 반드시 인자를 전달해야 함
+```python
+def greet(name, age):
+   print(f'{name}님 안녕하세요. 현재 {age}세 입니다.')
+
+greet('Alice', 25) # 안녕하세요 'Alice'님. 현재 25세 입니다.
+greet(25, 'Alice') # 안녕하세요 25님. 현재 'Alice'세 입니다.
+greet(25) # TypeError: greet() missing 1 required positional argument: 'age'
+```
 ### 기본 인자값 (Default Argument Values)
+- 함수 호출 시 해당 인자에 따로 적은 내용이 없으면 매개변수에 설정한 기본값이 전달되는 인자
+```python
+def greet(name, age = 30):
+   print(f'{name}님 안녕하세요. 현재 {age}세 입니다.')
+
+greet('Dave') # 안녕하세요 'Dave'님. 현재 30세 입니다.
+greet('Alice', 25) # 안녕하세요 'Alice'님. 현재 25세 입니다.
+```
 ### 키워드 인자 (Keyword Arguement)
+- 함수 호출 시 인자의 이름과 값을 함께 적는 인자
+- 매개변수와 인자를 일치시키지 않고 특정 인자에 전달 가능
+- 단, 키워드 인자는 위치 인자 뒤에 위치해야 함 (키워드 인자가 값만 있는 것보다 뒤에 있으면 안됨)
+```python
+def greet(name, age):
+   print(f'{name}님 안녕하세요. 현재 {age}세 입니다.')
+
+greet(name = 'Dave', age = 30) # 안녕하세요 'Dave'님. 현재 30세 입니다.
+greet(age = 25, name = 'Alice') # 안녕하세요 'Alice'님. 현재 25세 입니다.
+greet(age = 25, 'Alice') # SyntaxError: positional argument follows keyword argument
+```
 ### 임의의 인자 목록 (Arbitrary Argument Lists)
+- 함수 호출 시 인자가 얼마나 들어가야 할 지 모를때 설정하는 인자
+- `*` 뒤에 이름을 붙이면 되는데 보통은 `args`를 많이 활용
+- 여러 개의 인자를 튜플로 처리
+```python
+def calculate_sum(*args):
+   print(args) # (1, 100, 200, 500)
+   print(type(args)) # <class 'tuple'>
+
+calculate_sum(1, 100, 200, 500)
+```
 ### 임의의 키워드 인자 목록 (Arbitrary Keyword Argument Lists)
+- 정해지지 않은 키워드 인자를 처리하는 인자
+- `*` 뒤에 이름을 붙이면 되는데 보통은 `kwargs`를 많이 활용
+- 여러 개의 인자를 딕셔너리로 처리
+```python
+def users_info(*kwargs):
+   print(kwargs) # {name : 'Eva', age: '30'}
+
+users_info(name = 'Eva', age = '30')
+```
 ### 함수 인자 권장 작성 순서
+위치 → 기본 → 가변 → 가변 순으로 작성  
+- 호출 시 인자 순서의 혼란을 줄이기 위함
+- 다만 무조건 지켜야 하는 것은 아니고 상황에 따라 유연하게 작성
 
 # 재귀 함수 (Recursion function)
 함수 내부에서 자기 자신을 반복하는 함수 (factorial이 대표적인 case!)
