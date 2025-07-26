@@ -151,7 +151,64 @@ print(min(my_list)) # 1
 print(sorted(my_list, reverse = True)) # [5, 4, 3, 2, 1]
 ```
 # 함수와 Scope
+### Python의 범위 (Scope)
+함수는 코드 내부에 **local scope**를 생성하며, 그 외 공간인 **global scope**로 구분
+### 범위와 변수 관계
+- scope
+   - global scope: 코드 어디에서는 참조할 수 있는 공간
+   - local scope: 함수가 만든 scope (함수 내부에서만 참조 가능)
+- variable
+   - global variable: global scope에 정의된 함수
+   - local variable: local scope에 정의된 함수
+### 변수의 수명 주기
+- 변수의 수명 주기는 변수가 선언되는 위치와 scope에 따라 결정
+- built-in scope
+   - 파이썬이 실행된 이후부터 영원히 유지
+- global scope
+   - 모듈이 호출된 시점 이후 혹은 인터프리터가 끝날 때까지 유지
+- local scope
+   - 함수가 호출될 때, 생성되고, 함수가 종료될 때까지 유지  
+### 이름 검색 규칙
+**LEGB Rule** 이라고도 하며 아래와 같은 순서로 이름을 찾아나감
+1. Local Scope: 지역범위 (현재 작엽 중인 범위)
+2. Enclosed Scope: 지역 범위 한 단계 위 범위
+3. Global Scope: 최상단에 위치한 범위
+4. Built-in scope: 모든 것을 담고 있는 범위
+```python
+x = 'global'
+
+def outer():
+    x = 'enclosed'
+    
+    def inner():
+        x = 'local'
+        print(x)
+    
+    inner()
+
+outer()
+
+print(x) # local global
+'''
+inner() 함수 안에서 x = 'local' 이라는 지역 변수(Local Scope) 가 정의되어 있는 것을 먼저 출력하고
+outer() 함수에 있는 x = 'enclosed'는 return이나 print가 없기 때문에 따로 출력할 수 있는 방법이 없고
+그 이후에 global scope에 있는 'global'이 출력
+'''
+```
 ## global 키워드
+- 변수의 스코프를 전역 범위로 지정하기 위해 사용
+- 단, global 키워드 선언 전에 참조 불가하고, 매개변수에도 사용 불가
+```python
+num = 0 # 전역 변수
+
+def increment():
+		global num  # num를 전역 변수로 선언
+		num += 1
+
+print(num) # 0
+increment()
+print(num) # 1
+```
 
 # 함수 스타일 가이드
 ## 함수 이름 작성 원칙
@@ -179,4 +236,47 @@ print(sorted(my_list, reverse = True)) # [5, 4, 3, 2, 1]
 
 # Packing & Unpacking
 ## Packing
+여러 개의 데이터를 하나의 컬렉션으로 모아 담는 과정
+### 기본 원리
+- 여러 개의 값을 하나의 튜플로 묶는 파이썬의 기본 동작
+- 한 변수에 콤마(,)로 구분된 값을 넣으면 자동으로 튜플을 처리
+1. '*'을 활용한 패킹 (함수 매개변수 작성 시)
+   - 남은 위치 인자들을 튜플로 묶기
+   ```python
+   def my_func(*args):
+      print(args) # (1, 2, 3, 4, 5)
+      print(type(args)) # <class 'tuple'>
+
+   my_func(1, 2, 3, 4, 5)
+   ```
+2. '**'을 활용한 패킹 (함수 매개변수 작성시)
+   - 남은 키워드 인자들을 딕셔너리로 묶기
+   ```python
+   def my_func(**kwargs):
+      print(kwargs) # {'a' : 1, 'b' : 2, 'c' : 3}
+      print(type(kwargs)) # <class 'dict'>
+
+   my_func(a = 1, b = 2, c = 3)
+   ```
 ## Unpacking
+컬렉션에 담겨있는 데이터들을 개별 요소로 펼쳐 놓는 과정
+### 기본 원리
+- 튜플이나 리스트 등의 객체의 요소들을 개별 변수에 할당
+- 시퀀스 언패킹 또는 다중 할당이라고도 부름
+1. '*'을 활용한 언패킹 (함수 인자 전달)
+   - 리스트나 튜플 앞에 *을 붙여 각 요소를 함수의 개별 위치 인자로 전달
+   ```python
+   def my_function(x, y, z):
+		print(x, y, z)
+
+   names = ['alice', 'jane', 'peter']
+   my_function(*names) # alice jane peter
+   ```
+2. '**'을 활용한 언패킹 (딕셔너리 → 함수 키워드 인자)
+   - 딕셔너리 앞에 **를 붙여 {키 : 값} 쌍을 키=값 형태의 키워드 인자로 전달
+   ```python
+   def my_function(x, y, z):
+		print(x, y, z)
+
+   my_dict = {'a' : 1, 'b' : 2, 'c' : 3}
+   my_function(**my_dict) # 1 2 3
