@@ -166,22 +166,22 @@ print(response)
 ```python
 # 조건 작성은 반드시 표현식
 if 조건1:
-		조건 1을 만족할 때 실행할 코드
+	조건 1을 만족할 때 실행할 코드
 elif 조건2:
-		조건 2을 만족할 때 실행할 코드
+	조건 2을 만족할 때 실행할 코드
 elif 조건3:
-		조건 3을 만족할 때 실행할 코드
+	조건 3을 만족할 때 실행할 코드
 else:
-		모든 조건을 만족하지 않으면 실행할 코드
+	모든 조건을 만족하지 않으면 실행할 코드
 ```
 ### 조건문 예시
 ```python
 score = 97
 
 if score > 95:
-		print('축하합니다.')
+	print('축하합니다.')
 else:
-		print('수고하셨습니다.')
+	print('수고하셨습니다.')
 
 print(score) # 축하합니다.
 ```
@@ -189,9 +189,9 @@ print(score) # 축하합니다.
 score = 87
 
 if score > 95:
-		print('축하합니다.')
+	print('축하합니다.')
 else:
-		print('수고하셨습니다.')
+	print('수고하셨습니다.')
 
 print(score) # 수고하셨습니다.
 ```
@@ -228,8 +228,127 @@ elif dust > 30:
 else:
     print('좋음')
 ```
+
 # 반복문
+주어진 코드 블록을 여러 번 반복해서 실행하는 구문
+### 반복문의 종류
+1. `for`문  
+반복 가능(iterable)한 객체의 요소를 반복하는 데 사용
+2. `while` 문  
+`while`이 참일 동안에 반복하는 함수(끝나려면 언젠가 `False`가 되어야 함)
 ## `for` statement
+반복 가능(iterable)한 객체의 요소를 반복하는 데 사용
+```python
+for 변수 in 반복 가능한 객체:
+    코드 블록
+```
+> [!NOTE]  
+> **반복 가능한 객체(iterable)**  
+> 요소를 하나씩 반환할 수 있는 모든 객체  
+> `list`, `tuple`, `str` 같은 시퀀스 자료형 뿐만 아니라 `dict`, `set`과 같은 비 시퀀스 자료형도 반복 가능한 객체
+### `for`문 작동 원리
+1. 리스트 내 첫 항목이 반복변수(num)에 할당되고 코드 블록이 실행
+2. 순서대로 코드블록이 실행
+3. 더 이상 반복 변수가 없다면 종료
+```python
+my_list = [1, 2, 3]
+for num in my_list: # num: 반복 변수
+    print(num)
+"""
+1
+2
+3
+"""
+```
+### 문자열 순회
+```python
+country = 'Korea'
+
+for char in country:
+	print(char)
+
+# 출력
+"""
+K
+o
+r
+e
+a
+"""
+```
+### `range` 순회 (**for문에서 가장 많이 활용**)
+```python
+for i in range(1, 5):
+    print(i)
+"""
+1
+2
+3
+4
+"""
+```
+### 딕셔너리 순회
+```python
+my_dict = {'max' : 'red_bull', 'lewis' : 'ferrai', 'oscar' : 'mclaren'}
+for driver my_dict:
+    print(driver)
+    print(my_dict[driver])
+"""
+'max'
+'red_bull'
+'lewis'
+'ferrai'
+'oscar'
+'mclaren'
+"""
+```
+### 인덱스로 리스트 순회
+```python
+my_list = [20, 30, -50, 3, 134]
+
+for i in range(len(my_list)):
+    my_list[i] *= 2
+
+print(my_list) # [40, 60, -100, 6, 268]
+```
+### 중첩된 반복문
+첫 바깥쪽 중첩에 접근하고 먼저 안쪽의 중첩이 다 돌고 다음 과정을 반복하는 과정을 수행 
+```python
+outers = ['a', 'b']
+inners = ['1', '2']
+
+for outer in outers:
+    for inner in inners:
+        print(outer, inner)
+
+"""
+'a', '1'
+'a', '2'
+'b', '1'
+'b', '2'
+"""
+```
+### 중첩 리스트 순회
+```python
+my_list = [['a', 'b'], ['c', 'd']]
+
+for elem in my_list:
+    print(elem)
+"""
+['a', 'b']
+['c', 'd']
+"""
+
+for elem in my_list:
+    for element in elem:
+        print(element)
+"""
+'a'
+'b'
+'c'
+'d'
+"""
+```  
 ## `while` statement
 ## 반복 제어
 ## 유용한 내장 함수 `map` & `zip`
