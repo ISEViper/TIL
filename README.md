@@ -18,7 +18,7 @@
 - [Basic Syntax (1)](/basic_syntax_1/README.md)
 - [Basic Syntax (2)](/basic_syntax_2/README.md)
 - [Function](/function/README.md)
-- [Module&Control_of_Flow](/module%20&%20control%20of%20flow/README.md)
+- [Module&Control of Flow](/module%20&%20control%20of%20flow/README.md)
 
 ---
 
