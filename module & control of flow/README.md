@@ -92,10 +92,12 @@ print(my_math.add(30, 10)) # 40
 ```
 # 파이썬 표준 라이브러리
 **Python Standard Library**
-파이썬 언어와 함께 제공되는 다양한 모듈과 패키지의 모음
+파이썬 언어와 함께 제공되는 다양한 모듈과 패키지의 모음  
 참고사이트: [PSL](https://docs.python.org/ko/3.11/library/index.html)
 ## 패키지
 연관된 모듈들을 하나의 디렉토리에 모아놓은 것
+### 패키지의 활용 목적
+모듈 들의 이름 공간을 구분하여 충돌을 방지하고 모듈들을 관리하고 할 수 있도록 돕는 역할
 > **본인이 패키지를 만들 때 주의사항**
 > - 너무 많은 기능이 한 파일에 몰려있으면 사용자가 헷갈릴 수 있음
 > - 비슷한 기능은 묶고, 없는 것은 나누는 것이 사용하기 편함
@@ -113,10 +115,119 @@ print(my_math.add(30, 10)) # 40
 >외부 패키지들을 설치하도록 도와주는 파이썬의 패키지 관리 시스템  
 >- PyPI(Python Package Index)에 저장된 외부 패키지를 설치하는 것
 >- 직접 만든 패키지도 여기에 등록해서 활용 가능
+### `pip`를 활용한 패키지 설치
+```bash
+$ pip install SomePackage
+$ pip install SomePackage == 1.0.5
+$ pip install SomePackage >= 1.0.4
+```
+> - 다양한 패키지 버전이 존재하기 때문에 호환성 이슈에 대한 확인 필요
+> - `requirements.txt`로 개발환경을 통일시키는 것이 좋음
+### 외부 패키지 설치 및 사용 예시
+`request` 패키지 활용 예시
+- 먼저 패키지 설치 진행
+```bash
+$ pip install requests
+```
+- 이후 패키지를 `import` 하여 활용
+```python
+# HTTP 요청을 보내기 위한 requests 패키지를 불러옵니다.
+import requests
 
-# 제어문
+# 데이터를 요청할 API의 주소(URL)를 문자열로 정의합니다.
+# Nager.Date API를 사용하여 2025년 대한민국의 공휴일 정보를 요청합니다.
+url = "https://date.nager.at/api/v3/publicholidays/2025/KR"
+
+# requests.get(url)을 통해 해당 URL에 GET 요청을 보냅니다.
+# .json() 메서드를 사용하여 서버로부터 받은 JSON 형식의 응답(response)을
+# 파이썬 딕셔너리 또는 리스트 형태로 변환하여 response 변수에 저장합니다.
+response = requests.get(url).json()
+
+# 파이썬 객체로 변환된 공휴일 정보를 화면에 출력합니다.
+print(response)
+```
+
+# 제어문 (Control Statement)
+코드의 실행 흐름의 제어하는데 사용되는 구문
+- **조건**에 따라 코드 블록을 실행하거나 **반복**적으로 코드 실행
+- 조건문 : `if`, `else`, `else`
+- 반복문: `for`, `while` (`break`, `continue`로 반복 제어)
 # 조건문
 ## `if` statement
+### 조건문의 기본 구조
+- `if` 문
+    - 조건문의 기본 형태
+    - `if`문 내부의 코드가 실행 
+- `elif` 문
+    - 이전 조건을 만족하지 못하고 추가 조건이 필요할 때 사용
+    - 여러 `elif` 활용 가능
+- `else` 문
+    - 모든 조건을 만족하지 않을 때 실행
+```python
+# 조건 작성은 반드시 표현식
+if 조건1:
+		조건 1을 만족할 때 실행할 코드
+elif 조건2:
+		조건 2을 만족할 때 실행할 코드
+elif 조건3:
+		조건 3을 만족할 때 실행할 코드
+else:
+		모든 조건을 만족하지 않으면 실행할 코드
+```
+### 조건문 예시
+```python
+score = 97
+
+if score > 95:
+		print('축하합니다.')
+else:
+		print('수고하셨습니다.')
+
+print(score) # 축하합니다.
+```
+```python
+score = 87
+
+if score > 95:
+		print('축하합니다.')
+else:
+		print('수고하셨습니다.')
+
+print(score) # 수고하셨습니다.
+```
+### 복수 조건문
+조건식을 동시에 검사하는 것이 아니라 순차적으로 비교
+```python
+## 결과: 매우 나쁨
+dust = 155
+
+if dust > 150:
+    print('매우 나쁨')
+elif dust > 80:
+    print('나쁨')
+elif dust > 30:
+    print('보통')
+else:
+    print('좋음')
+```
+### 중첩 조건문
+`if`문 내에 또 다른 `if`문 작성 가능
+```python
+# 출력: 매우 나쁨
+#      위험해요! 나가지 마세요!
+dust = 480
+
+if dust > 150:
+    print('매우 나쁨')
+    if dust > 300:
+        print('위험해요! 나가지 마세요!')
+elif dust > 80:
+    print('나쁨')
+elif dust > 30:
+    print('보통')
+else:
+    print('좋음')
+```
 # 반복문
 ## `for` statement
 ## `while` statement
