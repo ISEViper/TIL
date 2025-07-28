@@ -290,7 +290,7 @@ for i in range(1, 5):
 ### 딕셔너리 순회
 ```python
 my_dict = {'max' : 'red_bull', 'lewis' : 'ferrai', 'oscar' : 'mclaren'}
-for driver my_dict:
+for driver in my_dict:
     print(driver)
     print(my_dict[driver])
 """
@@ -352,3 +352,52 @@ for elem in my_list:
 ## `while` statement
 ## 반복 제어
 ## 유용한 내장 함수 `map` & `zip`
+### `map` 함수
+`map(function, iterable)`  
+반복 가능한 데이터 구조(iterable)의 모든 요소에 함수(function)을 조회하고 그걸 map object로 묶어서 반환
+```python
+numbers = [1, 2, 3]
+result = map(str, numbers)
+
+print(result) # <map object at 0x00000239C915D760>
+print(list(result))  # ['1', '2', '3']
+```
+> [!TIP]  
+> `map` 함수 활용법
+> ```python
+> numbers = input().split()
+> print(numbers) # ['1', '2', '3']
+> test = list(map(int, input().split()))
+> print(test) # [1, 2, 3]
+> ```
+### `zip` 함수
+`zip(*iterable)`  
+여러 개의 반복 가능한 데이터 구조(*iterable)을 묶어 같은 위치에 있는 값들을 하나의 튜플로 만든 뒤 그걸 zip object로 묶어서 반환
+- 반복 가능한 자료형만 넣을 수 잇음
+- 반복 가능한 자료형의 길이가 다른 경우 짧은 것을 기준으로 묶음
+```python
+team = ['red_bull', 'mercedes', 'mclaren']
+driver = ['max', 'george', 'lando']
+
+f1 = zip(team, driver)
+
+print(f1) # <zip object at 0x000001FE5ADB38C0>
+print(list(f1)) # [('red_bull', 'max'), ('mercedes', 'george'), ('mclaren', 'lando')]
+```
+> [!TIP]  
+> `zip` 함수 활용법
+> ```python
+> kr_scores = [10, 20, 30 ,40]
+> math_scores = [30, 10, 40 ,20]
+> eng_scores = [20, 40, 10, 30]
+> 
+> for test_score in zip(kr_socres, math_scores, eng_scores):
+>   print(test_score)
+> 
+> """
+> (10, 20, 40)
+> (20, 40, 20)
+> (30, 50, 30)
+> (50, 70, 50)
+> """
+> ```
