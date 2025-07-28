@@ -7,18 +7,21 @@
 ## 🔍 탐색하기
 
 ### 🔧 개발 도구
-- [CLI](/cli/README.md)
-- [Git](/git/README.md)
-- [Github](/github/README.md)
+- [CLI](/cli/cli.md)
+- [Git](/git/git.md)
+- [Github](/github/github.md)
 
 ### ✒️ 문서 작성
-- [Markdown](/markdown/README.md)
+- [Markdown](/markdown/markdown.md)
 
 ### 🧱 기초 문법
-- [Basic Syntax (1)](/basic_syntax_1/README.md)
-- [Basic Syntax (2)](/basic_syntax_2/README.md)
-- [Function](/function/README.md)
-- [Module&Control of Flow](/module%20&%20control%20of%20flow/README.md)
+- [Basic Syntax (1)](/basic_syntax/basic_syntax_1.md)
+- [Basic Syntax (2)](/basic_syntax/basic_syntax_2.md)
+- [Function](/function/function.md)
+- [Module & Control of Flow](/module%20&%20control%20of%20flow/module_control_of_flow.md)
+
+### 🗂️ 자료구조
+- [Data Structure (1)](/Data_Structure/data_structure_1.md)
 
 ---
 
