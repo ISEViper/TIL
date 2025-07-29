@@ -21,9 +21,8 @@
 - [Module & Control of Flow](/module%20&%20control%20of%20flow/module_control_of_flow.md)
 
 ### 🗂️ 자료구조
-- [Data Structure (1)](/Data_Structure/data_structure_1.md)
-- [Data Structure (2)](/Data_Structure/data_structure_2.md)
-
+- [Data Structure](/Data_Structure/data_structure.md)
+- [OOP (1)](/OOP/OOP_1.md)
 ---
 
 ## ✨ About TIL
