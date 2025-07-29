@@ -299,6 +299,7 @@ print(data) # {}
 ```python
 data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
 
+# setdefault('nationality', 'NL')을 이후에 해도 None이 그대로 출력
 data.setdefault('nationality')
 print(data) # {'id': 'VER', 'num': 33, 'team_id': 'RBR', 'nationality': None}
 ```
@@ -334,6 +335,52 @@ print(data) # {'id': 'VER', 'num': 1, 'team_id': 'RBR', 'nationality': 'NL'}
 |`S.remove(x)`|세트에서 x를 제거하고 없는 경우 KeyError|
 |`S.pop()`|세트에서 임의의 항목을 제거하고 그 값을 반환|
 |`S.discard(x)`|세트에서 항목 x를 제거 없는 경우 아무 값도 출력 안 함|
+### `.add(x)`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+my_set.add(5)
+print(my_set) # {1, 2, 3, 'a', 5, 'c', 'b'}
+```
+### `.update(iterable)`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+my_set.update(['d', 4, 7])
+print(my_set) # {1, 2, 3, 'a', 4, 7, 'c', 'b', 'd'}
+```
+### `.clear()`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+my_set.clear()
+print(my_set) # set()
+```
+### `.remove(x)`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+my_set.remove(1) # {2, 3, 'a', 'c', 'b'}
+print(my_set)
+my_set.remove(10) # KeyError: 10
+```
+### `.pop()`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+print(my_set.pop()) # 1
+print(my_set) # {2, 3, 'a', 'c', 'b'}
+print(my_set.pop()) # 2
+print(my_set) # {3, 'a', 'c', 'b'}
+```
+### `.discard(x)`
+```python
+my_set = {1, 'a', 2, 'b', 'c', 3}
+
+my_set.discard(1) # {2, 3, 'a', 'c', 'b'}
+print(my_set)
+my_set.discard(10) 
+```
 ### 세트의 집합 매서드
 |매서드|설명|연산자|
 |---|---|---|
