@@ -324,9 +324,36 @@ data.update(num = 1, nationality = 'NL')
 print(data) # {'id': 'VER', 'num': 1, 'team_id': 'RBR', 'nationality': 'NL'}
 ```
 ## 세트
+고유한 항목들의 정렬되지 않은 컬렉션
 ### 세트 매서드
+|매서드|설명|
+|---|---|
+|`S.add(x)`|세트에 x를 추가, 만약 있다면 변화 없음|
+|`S.update(iterable)`|세트에 반복 가능한 데이터 구조 요소 추가|
+|`S.clear()`|세트의 모든 값 제거|
+|`S.remove(x)`|세트에서 x를 제거하고 없는 경우 KeyError|
+|`S.pop()`|세트에서 임의의 항목을 제거하고 그 값을 반환|
+|`S.discard(x)`|세트에서 항목 x를 제거 없는 경우 아무 값도 출력 안 함|
 ### 세트의 집합 매서드
+|매서드|설명|연산자|
+|---|---|---|
+|`set1.difference(set2)`|`set1`과 `set2`의 차집합|`set1 - set2`|
+|`set1.intersections(set2)`|`set1`과 `set2`의 교집합|`set1 & set2`|
+|`set1.issubset(set2)`|`set1`이 `set2`의 항목에 모두 들어가 있으면 True 반환|`set1 <= set2`|
+|`set1.issuperset(set2)`|`set1`이 `set2`의 항목을 모두 포함하면 True 반환|`set1 >= set2`|
+|`set1.union(set2)`|`set1`과 `set2`의 합집합|`set1 \| set2`|
+```python
+set1 = {0, 1, 2, 3, 4}
+set2 = {1, 3, 5, 7, 9}
+set3 = {0, 1}
 
+print(set1.difference(set2))  # {0, 2, 4}
+print(set1.intersection(set2))  # {1, 3}
+print(set1.issubset(set2))  # False
+print(set3.issubset(set1))  # True
+print(set1.issuperset(set2))  # False
+print(set1.union(set2))  # {0, 1, 2, 3, 4, 5, 7, 9}
+```
 # 복사
 ## 객체와 참조
 ### 가변 객체 vs 불변 객체
