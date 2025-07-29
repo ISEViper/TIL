@@ -97,25 +97,122 @@ print(new_text_1) # Hello, world
 
 # title
 text = 'heLLo, WorLD'
-new_text_1 = text.title()
-print(new_text_1) # Hello, World
+new_text_2 = text.title()
+print(new_text_2) # Hello, World
 
 # upper
 text = 'heLLo, WorLD'
-new_text_1 = text.upper()
-print(new_text_1) # HELLO, WORLD
+new_text_3 = text.upper()
+print(new_text_3) # HELLO, WORLD
 
 # lower
 text = 'heLLo, WorLD'
-new_text_1 = text.lower()
-print(new_text_1) # hello, world
+new_text_4 = text.lower()
+print(new_text_4) # hello, world
 
 # swapcase
 text = 'heLLo, WorLD'
-new_text_1 = text.swapcase()
-print(new_text_1) # HEllO, wORld
+new_text_5 = text.swapcase()
+print(new_text_5) # HEllO, wORld
 ```
 ## 리스트
+### 리스트 값 추가 및 삭제 메서드
+|매서드|설명|
+|---|---|
+|`L.append(x)`|리스트 마지막에 항목 x를 추가|
+|`L.extend(m)`|iterable m의 모든 항목들을 리스트에 추가 (+=와 같은 기능)|
+|`L.insert(i, x)`|리스트 i번째 순서에 항목 x를 삽입|
+|`L.remove(x)`|리스트 가장 왼쪽에 있는 항목(첫번째) x를 제거 → 항목이 존재하지 않는 경우, ValueError|
+|`L.pop()`|리스트의 가장 오른쪽의 값을 반환 후 제거|
+|`L.pop(i)`|리스트 i번째 순서에 있는 값을 반환 후 제거|
+|`L.clear`|리스트의 모든 항목 제거|
+### `.append(x)`
+```python
+my_list = ['a', 'b', 'c', 'd']
+my_list.append('e')
+
+print(my_list) # ['a', 'b', 'c', 'd', 'e']
+```
+### `.extend(m)`
+```python
+my_list = ['a', 'b', 'c', 'd']
+my_list.extend(['e', 'f', 'g'])
+
+print(my_list) # ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+```
+> [!WARNING]  
+> **`extend` 주의 사항 (`append`와의 비교)**
+> ```python
+> my_list = ['a', 'b', 'c', 'd']
+> my_list.append(['e', 'f', 'g']) # ['a', 'b', 'c', 'd', ['e', 'f', 'g']]
+> 
+> # 반복 가능한 객체가 아니면 추가 불가
+> my_list.extend(100) # TypeError: 'int' object is not iterable
+> ```
+### `.insert(i, x)`
+```python
+my_list = ['a', 'b', 'c', 'd']
+my_list.insert(1, 'k')
+
+print(my_list) # ['a', 'k', 'b', 'c', 'd']
+```
+### `.remove(x)`
+```python
+my_list = ['a', 'b', 'a', 'b', 'c', 'd']
+my_list.remove('a')
+
+print(my_list) # ['b', 'a', 'b', 'c', 'd']
+```
+### `.pop()`, `.pop(i)`
+```python
+my_list = ['a', 'b', 'a', 'b', 'c', 'd']
+item_1 = my_list.pop()
+item_2 = my_list.pop(0)
+
+print(item_1) # 'd'
+print(item_2) # 'a'
+print(my_list) # ['b', 'a', 'b', 'c']
+```
+### `.clear()`
+```python
+my_list = ['a', 'b', 'a', 'b', 'c', 'd']
+my_list.clear()
+
+print(my_list) # []
+```
+### 리스트 탐색 및 정렬 매서드
+|매서드|설명|
+|---|---|
+|`L.index(x)`|리스트에서 첫 번째로 일치하는 항목 x의 인덱스를 반환|
+|`L.count(x)`|리스트 내 항목 x의 개수 반환|
+|`L.reverse()`|리스트 순서를 역순으로 변경 (정렬하는 것은 아님)|
+|`L.sort()`|리스트 정렬|
+### `.index()`
+```python
+my_list = ['a', 'b', 'a', 'b', 'c', 'd']
+index = my_list.index('a')
+print(index) # 0
+```
+### `.count(x)`
+```python
+my_list = ['a', 'b', 'a', 'b', 'c', 'd']
+count = my_list.count('a')
+print(count) # 2
+```
+### `.reverse()`
+```python
+my_list = [25, 3, 30, 5, 1]
+my_list.reverse()
+print(my_list.reverse()) # None (reverse는 None을 반환)
+print(my_list) # [1, 5, 30, 3, 25]
+```
+### `.sort()`
+```python
+my_list = [25, 3, 30, 5, 1]
+my_list.sort()
+print(my_list.sort()) # None (sort는 None을 반환)
+print(my_list) # [1, 3, 5, 25, 30]
+```
 # 복사
 ## 객체와 참조
 ## 얕은 복사
