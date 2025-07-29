@@ -22,6 +22,7 @@
 
 ### 🗂️ 자료구조
 - [Data Structure (1)](/Data_Structure/data_structure_1.md)
+- [Data Structure (2)](/Data_Structure/data_structure_2.md)
 
 ---
 
