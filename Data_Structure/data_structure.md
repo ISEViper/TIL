@@ -58,7 +58,7 @@ print(my_letter_1.isalpha()) # True
 |매서드|설명|
 |---|---|
 |`s.replace(old, new[, count])`|바꿀 대상 글자를 새로운 글자로 바꿔서 전환|
-|`s.strip([chars])`|문자열의 시작과 끝에 있ㄱ는 공백 혹은 지정한 문자를 제거|
+|`s.strip([chars])`|문자열의 시작과 끝에 있는 공백 혹은 지정한 문자를 제거|
 |`s.split(sep=None, maxsplit=-1)`|`sep`을 구분자 문자열로 사용해서 문자열에 있는 단어들의 리스트를 반환|
 |`'separator'.join(iterable)`|구분자로 iterable의 문자열을 연결한 문자열을 반환|
 |`s.capitalize()`|가장 첫 번째 글자를 대문자로 변경|
@@ -271,8 +271,8 @@ data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
 
 print(data.items()) # dict_items([('id', 'VER'), ('num', 33), ('team_id', 'RBR')])
 
-for key in data.keys():
-    print(key)
+for item in data.items():
+    print(item)
 """
 ('id', 'VER')
 ('num', 33)
