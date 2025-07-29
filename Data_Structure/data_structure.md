@@ -215,7 +215,114 @@ print(my_list) # [1, 3, 5, 25, 30]
 ```
 # 비시퀀스 데이터 구조
 ## 딕셔너리
+키와 값을 짝지어 저장하는 자료구조
 ### 딕셔너리 매서드
+|매서드|설명|
+|---|---|
+|`D.get(k)`|키에 연결된 값을 반환|
+|`D.get(k, v)`|키에 연결된 값을 반환하거나 없는 경우 기본 값 v를 반환|
+|`D.keys()`|딕셔너리에서 키를 모은 객체를 반환|
+|`D.values()`|딕셔너리에서 값을 모은 객체를 반환|
+|`D.items()`|딕셔너리에서 키/값쌍을 모은 객체를 반환|
+|`D.pop(k)`|딕셔너리에서 키를 삭제하고 값을 반환(없으면 오류)|
+|`D.pop(k, v)`|딕셔너리에서 키를 삭제하고 값을 반환(없으면 v 반환)|
+|`D.setdefault(k)`|딕셔너리에 키와 연결된 값을 반환|
+|`D.setdefault(k, v)`|딕셔너리의 키와 연결된 값을 반환하고 만약 키가 없다면 값과 연결된 키를 딕셔너리에 추가하고 값을 반환(이미 있는 키에 대해 값을 바꾸지 않음)|
+|`D.update(other)`|other에 있는 키들이 딕셔너리에 전부 있으면 키에 해당하는 값을 대체하고 없는 경우 키/값을 딕셔너리에 추가|
+### `.get(key[,default])`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+print(data.get('id')) # VER
+print(data.get('nationality')) # None
+print(data.get('nationality', 'NL')) # NL
+```
+### `.keys()`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+print(data.keys()) # dict_keys(['id', 'num', 'team_id'])
+
+for key in data.keys():
+    print(key)
+"""
+id
+num
+team_id
+"""
+```
+### `.values()`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+print(data.values()) # dict_values(['VER', 33, 'RBR'])
+
+for value in data.values():
+    print(value)
+"""
+VER
+33
+RBR
+"""
+```
+### `.items()`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+print(data.items()) # dict_items([('id', 'VER'), ('num', 33), ('team_id', 'RBR')])
+
+for key in data.keys():
+    print(key)
+"""
+('id', 'VER')
+('num', 33)
+('team_id', 'RBR')
+"""
+```
+### `.pop(key[, default])`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+print(data.pop('id')) # VER
+print(data.pop('nationality')) # KeyError: 'nationality'
+print(data.pop('nationality', 'NL')) # NL
+print(data) # {'num': 33, 'team_id': 'RBR'}
+```
+### `.clear()`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+data.clear()
+print(data) # {}
+```
+### `.setdefault(key[, default])`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+data.setdefault('nationality')
+print(data) # {'id': 'VER', 'num': 33, 'team_id': 'RBR', 'nationality': None}
+```
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+data.setdefault('nationality', 'NL')
+print(data) # {'id': 'VER', 'num': 33, 'team_id': 'RBR', 'nationality': 'NL'}
+```
+### `.update([other])`
+```python
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+change_data = {'num' : 1, 'id' : 'MAX'}
+data.update(change_data)
+print(data) # {'id': 'MAX', 'num': 1, 'team_id': 'RBR'}
+```
+```python
+# update 안에 바꿀 키 값을 str로 넣으면 안됨!
+data = {'id': 'VER', 'num': 33, 'team_id': 'RBR'}
+
+data.update(num = 1, nationality = 'NL')
+print(data) # {'id': 'VER', 'num': 1, 'team_id': 'RBR', 'nationality': 'NL'}
+```
 ## 세트
 ### 세트 매서드
 ### 세트의 집합 매서드
