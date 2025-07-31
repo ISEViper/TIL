@@ -62,5 +62,45 @@ alice.introduce() # 객체가 자신의 정보를 출력
 ||클래스 변수를 조작하거나 클래스 레벨의 동작을 수행||
 ### 인스턴스 메서드
 ### 클래스 메서드
+- 클래스 변수(공통 속성)를 조작하거나 클래스 레밸의 동작을 수행
+- `@classmethod`를 사용하면 클래스 자체를 호출 가능
+- 그 안에서 클래스 변수를 변경하거나 전체 동작 정의 가능
+```python
+class MyClass:
+    ...
+    @classmethod
+    def class_method(cls, arg1, ...):
+        pass
+```
+→ `cls`는 매개변수의 이름일 뿐이며 다른 이름으로 설정 가능하지만 다른 이름으로 사용하지 않을 것을 강력하게 권장 (불문율 같은 것임!)
+```python
+class Person:
+    population = 0
+
+    def __init__(self, name):
+        self.name = name
+        Person.increase_population()
+    
+    @classmethod
+    def increase_population(cls):
+        cls.poplulation += 1
+```
 ### 스태틱(정적) 메서드 (Static Method)
+- 클래스 인스턴스와 상관없이 독립적으로 동작하는 메서드
+- `@staticmethod`를 사용하면 클래스 내부에 있지만 어떤 객체와도 관계없이 동작하는 메서드 생성 가능
+```python
+class MyClass:
+    ...
+    @staticmethod
+    def static_method(arg1, arg2, ...):
+        pass
+```
+```python
+class MathUtils:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+print(MathUtils.add(3, 5)) # 8
+```
 # 객체 지향 프로그래밍 연습: 입출금이 가능한 은행 계좌 클래스 만들기
