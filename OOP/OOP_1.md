@@ -167,7 +167,25 @@ class MyClass:
 >    - 인스턴스 메서드의 첫번째 인자가 반드시 자기 자신인 이유
 >- `'hello'.upper()`은 `str.upper('hello')`를 객체 지향 방식의 메서드로 호출하는 표현 (단축형 표현)
 >    - 'hello'라는 문자열 객체가 단순히 어딘가의 함수로 들어가는 인자로 활용되는 것이 아님
->    - 객체 스스로 메서드를 호출하고 코드를 동작하는 객체 지향적인 표현    
+>    - 객체 스스로 메서드를 호출하고 코드를 동작하는 객체 지향적인 표현
+### 생성자 메서드 (Constructor Method)
+인스턴스 객체가 생성될 때 자동으로 호출되는 메서드 → 인스턴스 변수들의 초기값을 초기화
+```python
+class Person:
+    def __init__(self, name):
+        # 왼쪽 name : 인스턴스 변수 name
+        # 오른쪽 name : 생성자 메서드의 매개변수 이름
+        self.name = name
+        print("인스턴스가 생성되었습니다.")
+     
+
+    def greeting(self):
+        print(f'안녕하세요 {self.name}입니다.')
+
+person1 = Person('아이유') # 인스턴스가 생성되었습니다.
+person1.greeting() # 안녕하세요 아이유입니다.
+# Person.greeting(person1)
+```
 ### 클래스 메서드
 - 클래스 변수(공통 속성)를 조작하거나 클래스 레밸의 동작을 수행
 - `@classmethod`를 사용하면 클래스 자체를 호출 가능
