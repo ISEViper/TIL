@@ -77,9 +77,68 @@ class Person:
         print(f'안녕하세요, {name}입니다. 나이는 {age}살입니다.')
 ```
 ### 인스턴스 (Instance)
+클래스를 통해 생성된 객체
+- 클래스를 사용해 실제로 만들어진 객체
+- 같은 클래스로 여러 인스턴스 생성 가능
+- 각 인스턴스는 클래스 구조를 따라 동작하지만 서로 독립적인 데이터를 가질 수 있음
+- 클래스가 설계도라면, 인스턴스는 그 클래스를 바탕으로 만들어진 실제 물건
+```python
+bob = Person('Bob', 25)
+bob.introduce() # 안녕하세요. Bob입니다. 나이는 25살 입니다.
+alice = Person('Alice', 21)
+alice.introduce() # 안녕하세요. Alice입니다. 나이는 21살 입니다.
+```
 ### 클래스와 인스턴스
+F1Driver 클래스에 생성된 Max_Verstappen 인스턴스
+- Max_Verstappen은 객체이다. ✅
+- Max_Verstappen은 인스턴스이다. ❌
+- Max_Verstappen은 F1Driver클래스의 인스턴스이다. ✅
 ### 클래스 구성 요소
+**생성자 메서드**
+- 인스턴스 생성 시 자동 호출되는 특별 메서드
+- `__init__`이라는 메서드로 정의
+- 인스턴스 초기화 담당
+```python
+class Person:
+    def __init__(self, name, age):
+        ...
+```
+**인스턴스 변수**
+- 각 인스턴스별 고유한 특성
+- `self.변수명`으로 정의
+- 인스턴스마다 독립적인 값 유지
+```python
+class Person:
+    def __init__(self, name, age):
+        # 인스턴스 변수 정의
+        self.name = name
+        self.age = age
+```
+**클래스 변수**
+- 모든 인스턴스가 공유하는 속성
+- 클래스 내부에서 직접 정의
+```python
+class Person:
+    # 클래스 변수 정의
+    population = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
 ### 클래스 변수와 인스턴스 변수
+- 클래스 변수와 동일한 이름으로 인스턴스 변수 생성 시 클래스 변수가 아닌 변수 먼저 참조
+- `class.class_variable`로 참조 가능
+```python
+class Circle:
+    pi = 3.14
+    def __init__(self, radius):
+        self.radius = radius
+
+c1 = Circle(5)
+c1.pi = 10
+print(c1.pi) # 10
+```
 ## 메서드 (Method)
 ### 메서드 종류
 |인스턴스 메서드|클래스 메서드|스태틱 메서드|
@@ -87,6 +146,28 @@ class Person:
 |인스턴스의 상태를 변경하거나 해당 인스턴스의 특정 동작을 수행|인스턴스의 상태에 의존하지 않는 기능을 정의|클래스 및 인스턴스과 관계 없는 일반적인 기능을 수행|
 ||클래스 변수를 조작하거나 클래스 레벨의 동작을 수행||
 ### 인스턴스 메서드
+- 인스턴스의 상태를 조작하거나 동작을 수행
+- 인스턴스가 호출!
+### 인스턴스 메서드 구조
+- 클래스 내부에 정의되는 메서드 기본
+- **반드시 첫번째 인자로 인스턴스 자신(`self`)을 받음
+- 인스턴스 속성에 접근하거나 변경 가능
+```python
+class MyClass:
+    def instance_method(self, arg1, ...):
+        pass
+```
+>[!NOTE]
+>**`self` 동작 원리**  
+>`upper` 메서드를 사용해 문자열 `'hello'`를 대문자로 변경  
+>`'hello'.upper()`  
+>실제 파이썬 내부에서 작동하는 방식  
+>`str.upper('hello')`
+>- `str`클래스가 `upper`메서드를 호출했고, 그 첫번째 인자가 문자열 인스턴스가 호출한 것
+>    - 인스턴스 메서드의 첫번째 인자가 반드시 자기 자신인 이유
+>- `'hello'.upper()`은 `str.upper('hello')`를 객체 지향 방식의 메서드로 호출하는 표현 (단축형 표현)
+>    - 'hello'라는 문자열 객체가 단순히 어딘가의 함수로 들어가는 인자로 활용되는 것이 아님
+>    - 객체 스스로 메서드를 호출하고 코드를 동작하는 객체 지향적인 표현    
 ### 클래스 메서드
 - 클래스 변수(공통 속성)를 조작하거나 클래스 레밸의 동작을 수행
 - `@classmethod`를 사용하면 클래스 자체를 호출 가능
@@ -130,3 +211,37 @@ class MathUtils:
 print(MathUtils.add(3, 5)) # 8
 ```
 # 객체 지향 프로그래밍 연습: 입출금이 가능한 은행 계좌 클래스 만들기
+1. `def __init__(self, owner, balance = 0)`
+2. `interest_rate = 0.03`
+```python
+class BankAccount:
+    interrest_rate = 0.03
+
+    def __init__(self, owner, balance = 0):
+       self.owner = owner
+       self.balance = balance 
+```  
+3. `deposit(self, amount)`
+4. `withdraw(self, amount)`
+```python
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > balance:
+            print('잔액 부족으로 출금을 진행할 수 없습니다.')
+        else:
+            self.balance -= amount
+```
+6. `set_interest_rate(cls, rate)`
+```python
+    @classmethod
+    def set_interest_rate(cls, rate):
+        cls.interest_rate = rate
+```
+8. `is_positive(amount)`
+```python
+    @staticmethod
+    def is_positive(amount):
+        return amount > 0
+```
