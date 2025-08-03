@@ -130,6 +130,54 @@ my_dog.eat() # 개가 먹는 중
 > }
 > ```
 ## 다중 상속
+- 둘 이상의 상위 클래스로부터 여러 행동이나 특징을 상속받을 수 있음
+- 상속받은 모든 클래스의 요소 활용 가능
+- 중복된 속성이나 메서드가 있는 경우 **상속 순서에 의해 결정**
+```python
+class Person:
+   def __init__(self, name):
+      self.name = name
+
+   def greeting(self):
+      return f'안녕, {self.name}'
+
+class Mom(Person):
+   gene = 'XX'
+
+   def swim(self):
+      return '엄마가 수영'
+
+class Dad(Person):
+   gene = 'XY'
+
+   def walk(self):
+      return '아빠가 걷기'
+
+class FirstChild(Dad, Mom):
+    def swim(self):
+        return '첫째가 수영'
+
+    def cry(self):
+        return '첫째가 응애'
+
+baby1 = FirstChild()
+print(baby1.swim()) # 첫째가 수영
+print(baby1.walk()) # 아빠가 걷기
+print(baby1.cry()) # 첫째가 응애
+print(baby1.gene) # XY
+```
+### 다이아몬드 문제 (The diamond problem)
+-  두 클래스  B와 C가 A에서 상속되고 클래스 D가 B와 C 모두에서 상속될 때 발생하는 모호함
+-  B와 C를 재정의한 메서드가 A에 있고 D가 이를 재정의하지 않는 경우
+   - D는 B의 메서드 중 어떤 버전을 상속하는가?
+   - 아니면 C의 메서드 버전을 상속하는가?
+### MRO(Method Resolution Order)
+파이썬이 메서드를 찾는 순서에 대한 규칙이자 메서드 결정 방법
+- MRO는 다중 상속에서 어떤 부모 클래스의 메서드를 먼저 사용할지 순서를 정의
+- 파이썬은 미리 정해진 MRO를 통해 다중 상속 환경에서도 예측 가능한 방식으로 메서드 탐색이 이루어질 수 있도록 함
+### MRO가 필요한 이유
+- 부모 클래스들이 여러번 액세스 되지 않도록 각 클래스에서 지정된 왼쪽에서 오른쪽으로 가는 순서 보존
+- 각 부모를 오직 한 번만 호출하고, 부모들의 우선순위에 영향을 주지 않으면서 서브 클래스를 만드는 단조적인 구조 형성
 ## `super()` 메서드
 # 에러와 예외
 ## 디버깅
@@ -139,3 +187,4 @@ my_dog.eat() # 개가 먹는 중
 ## `try` & `except`
 ## 복수 예외 처리
 ## `else` & `finally`
+
