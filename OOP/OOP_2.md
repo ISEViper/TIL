@@ -179,6 +179,39 @@ print(baby1.gene) # XY
 - 부모 클래스들이 여러번 액세스 되지 않도록 각 클래스에서 지정된 왼쪽에서 오른쪽으로 가는 순서 보존
 - 각 부모를 오직 한 번만 호출하고, 부모들의 우선순위에 영향을 주지 않으면서 서브 클래스를 만드는 단조적인 구조 형성
 ## `super()` 메서드
+MRO에 따라 현재 클래스의 부모(상위) 클래스의 메서드나 속성에 접근할 수 있게 해주는 내장 함수
+- `super()`를 사용하면 직접 부모 클래스 이름을 적지 않아도 MRO에 따라 자동으로 올바른 메서드를 찾아 실행
+- 다중 상속에서 `super()`를 호출하면 상속 순서에 맞춰 여러 부모 클래스의 메서드를 순차적으로 실행 가능
+- 생성자나 오버라이딩된 메서드에서 `super()`를 호출하면 부모 클래스의 초기화나 로직을 그대로 활용 가능
+### `super()`의 특징
+단순히 부모 클래스의 메서드를 호출하기 위한 용도 뿐만 아니라 다중 상속이 있을 때도 MRO에 따라 상위 클래스의 메서드를 찾아 실행하기 위해 `super()`를 사용
+### `super()` 예시
+**단일 상속**
+- `super()` 이용 전
+```python
+class Person:
+   def __init__(self, name, age):
+      self.name = name
+      self.age = age
+
+class Student(Person):
+   def __init__(self, name, age, gpa):
+      self.name = name
+      self.age = age
+      self.gpa = gpa
+```
+- `super()` 이용 후
+```python
+class Person:
+   def __init__(self, name, age):
+      self.name = name
+      self.age = age
+
+class Student(Person):
+   def __init__(self, name, age, gpa):
+      super().__init__(name, age)
+      self.gpa = gpa
+```
 # 에러와 예외
 ## 디버깅
 ## 에러
@@ -187,4 +220,5 @@ print(baby1.gene) # XY
 ## `try` & `except`
 ## 복수 예외 처리
 ## `else` & `finally`
+
 
