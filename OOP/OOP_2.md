@@ -212,6 +212,36 @@ class Student(Person):
       super().__init__(name, age)
       self.gpa = gpa
 ```
+**다중 상속**
+```python
+class ParentA:
+   def __init__(self):
+      super().__init__()
+      self.value_a = 'ParentA'
+
+   def show_value(self):
+      print(f'Value from ParentA: {self.value_a}')
+
+class ParentB:
+   def __init__(self):
+      self.value_b = 'ParentB'
+
+   def show_value(self):
+      print(f'Value from ParentB: {self.value_b}')
+
+class Child(ParentA, ParentB):
+   def __init__(self):
+      super().__init__()
+      self.value_c = 'Child'
+
+   def show_value(self):
+        super().show_value()  # ParentA 클래스의 show_value 메서드 호출
+        print(f'Value from Child: {self.value_c}')
+
+print(child.value_c)  # Child
+print(child.value_b)  # ParentB
+print(child.value_a)  # ParentA
+```
 # 에러와 예외
 ## 디버깅
 ## 에러
@@ -220,5 +250,6 @@ class Student(Person):
 ## `try` & `except`
 ## 복수 예외 처리
 ## `else` & `finally`
+
 
 
