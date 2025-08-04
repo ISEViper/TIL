@@ -216,6 +216,8 @@ class Student(Person):
 ```python
 class ParentA:
    def __init__(self):
+      # 상속의 안정적인 호출을 위한 super()
+      # 만약에 이게 없다면 Child가 value_b 호출 시 KeyError 발생
       super().__init__()
       self.value_a = 'ParentA'
 
@@ -242,14 +244,72 @@ print(child.value_c)  # Child
 print(child.value_b)  # ParentB
 print(child.value_a)  # ParentA
 ```
+> [!IMPORTANT]
+> **단일 상속 구조에서의 `super()`함수**
+> - 부모 클래스의 생성자 또는 메서드를 호출하기 위해 사용
+> - 명시적으로 이름을 지정하지 않고 부모 클래스를 참조할 수 있으므로 코드 유지 관리에 용이
+> - 클래스 이름이 변경되거나 부모 클래스가 교체되어도 `super()`를 사용하면 코드 수정이 더 적게 필요
+>
+> **다중 상속 구조에서의 `super()`함수**
+> - MRO(메서드 해석 순서)에 따라 각 클래스의 메서드를 찾아가기 때문에 단순히 직계 부모만이 아니라 다중 상속 관게에서도 적절한 상위 클래스의 메서드를 안전하게 호출 가능
+> - 이를 통해 복잡한 상속 구조에서도 코드를 유연하고 깔끔하게 유지 가능
 # 에러와 예외
 ## 디버깅
+소프트웨어에서 발생하는 버그를 찾아내고 수정하는 과정
+→ `print`함수 또는 IDE 등에서 제공하는 기능으로 디버깅 가능
 ## 에러
+프로그램 실행 중에 발생하는 예외 상황
 ## 예외
+프로그램 실행 중에 감지되는 에러
+### 내장 예외 (Built-in Exception)
+- `ZeroDivisionError`: 나누기 또는 모듈로 0으로 나누려고 할 때
+- `TypeError`: 타입 불일치/인자 누락/인자 초과/인자 타입 불일치
+- `ValueError`: 연산이나 함수에는 문제가 없지만 부적절한 값으로 인자를 받는 경우
+- `NameError`: 지역 또는 전역 이름을 찾을 수 없을 때
+- `IndexError`: 시퀀스 인덱스가 범위를 벗어났을 때
+- `KeyError`: 딕셔너리에 해당 키가 존재하지 않을 때
+- `ImportError`: 임포트하려는 이름을 찾을 수 없을 때
+- `ModuleNotFoundError`: 모듈을 찾을 수 없을 때
+- `KeyboardInterrupt`: 사용자가 ctrl-c 또는 delete를 누를 때 발생 (강제 종료 시)
+- `IndentationError`: 잘못된 들여쓰기
 # 예외 처리
+예외가 발생했을 때 프로그램이 비정상적으로 종료되지 않고, 적절하게 처리할 수 있도록 하는 방법
 ## `try` & `except`
+- `try`: 예외가 발생할 수 있는 코드
+- `except`: 예외 발생 시 실행할 코드
+```python
+try:
+   예외가 발생할 수 있는 코드
+except 예외 조건:
+   예외 처리 코드
+```
+```python
+try:
+   x = int(input('숫자를 입력하세요: '))
+   y = 10/x
+except ZeroDivisonError:
+   print('0으로 나눌 수 없습니다.')
+except ValueError:
+   print('유효한 숫자가 아닙니다.')
+```
 ## 복수 예외 처리
 ## `else` & `finally`
+- `else`: 예외가 발생하지 않았을 때 추가 작업 진행
+- `finally`: 예외 발생여부와 상관없이 항상 실행할 코드 작성
+```python
+try:
+   x = int(input('숫자를 입력하세요: '))
+   y = 10/x
+except ZeroDivisonError:
+   print('0으로 나눌 수 없습니다.')
+except ValueError:
+   print('유효한 숫자가 아닙니다.')
+else:
+   print(f'결과: {y}')
+finally:
+   print('프로그램이 종료되었습니다')
+```
+
 
 
 
